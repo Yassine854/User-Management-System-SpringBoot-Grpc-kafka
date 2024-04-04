@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package com.aniss;
+
+option java_multiple_files = true;
+
+message UserEntityRequest {
+  float id = 1;
+}
+
+message UserEntityResponse {
+  float id = 1;
+  string name = 2;
+}
+
+message GetAllUsersRequest {}
+
+message GetAllUsersResponse {
+  repeated UserEntityResponse users = 1;
+}
+
+service UserService {
+  rpc getUserById(UserEntityRequest) returns (UserEntityResponse) {};
+  rpc getAllUsers(GetAllUsersRequest) returns (GetAllUsersResponse) {};
+}

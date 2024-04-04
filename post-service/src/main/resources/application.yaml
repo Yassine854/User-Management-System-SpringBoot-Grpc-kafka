@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    username: postgres
+    password: 123
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/users
+    hikari:
+      maximum-pool-size: 25
+      minimum-idle: 1
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+server:
+  port: 8081
+
+grpc:
+  client:
+    UserService:
+      address: static://localhost:9090
+      negotiation-type: PLAINTEXT
