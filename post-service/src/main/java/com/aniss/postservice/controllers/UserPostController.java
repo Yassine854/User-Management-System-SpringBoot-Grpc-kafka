@@ -40,7 +40,7 @@ public class UserPostController {
         try {
             User userModel = userClient.getUserById(user);
             List<Post> posts = postService.all(userModel);
-            ModelAndView modelAndView = new ModelAndView("posts");
+            ModelAndView modelAndView = new ModelAndView("Userposts");
             modelAndView.addObject("posts", posts);
             return modelAndView;
         } catch (StatusRuntimeException exception) {

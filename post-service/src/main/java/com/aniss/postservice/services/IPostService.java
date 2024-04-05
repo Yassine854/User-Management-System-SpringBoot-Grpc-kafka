@@ -11,5 +11,6 @@ public interface IPostService {
     Post create(CreatePost createPost);
     Optional<Post> one(Long id);
     List<Post> all(User user);
+    List<Post> GetAllPosts();
     void bulkDelete(User user);
 }

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Navbar */
+    .navbar {
+      background-color: #4e73df; /* Matched with sidebar color */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adding shadow */
+    }
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      background-color: #4e73df; /* Bootstrap primary color */
+      padding-top: 60px; /* Height of navbar */
+      overflow-y: auto; /* Enable scrolling if content overflows */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adding shadow */
+      transition: width 0.3s ease;
+    }
+    .sidebar-brand {
+      padding: 0.75rem 1rem;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: #ffffff; /* White */
+    }
+    .sidebar-heading {
+      padding: 0.375rem 1rem;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      color: #ffffff; /* White */
+    }
+    .nav-item {
+      padding: 0.5rem 1rem;
+    }
+    .nav-item:hover {
+      background-color: #3e64ff; /* Slightly darker blue */
+    }
+    .nav-link {
+      color: #ffffff !important; /* White */
+    }
+    /* Main content */
+    .main-content {
+      margin-left: 250px; /* Same as the width of the sidebar */
+      padding: 20px;
+      transition: margin-left 0.3s ease;
+    }
+    .table-wrapper {
+      text-align: center;
+    }
+    /* Table styles */
+    .table {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .table thead {
+      background-color: #4e73df; /* Bootstrap primary color */
+      color: #ffffff; /* White */
+    }
+    .table th,
+    .table td {
+      border: none;
+    }
+    .table th {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#">User Posts</a>
+</nav>
+<div class="sidebar">
+  <h5 class="sidebar-brand">Navigation</h5>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/users"><i class="fas fa-users mr-2"></i>Users</a>
+    </li>
+  </ul>
+</div>
+<div class="main-content">
+  <div class="container">
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
+      New User
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addPostModalLabel">Add New User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/users" method="post" id="addUserForm">
+
+              <div class="form-group">
+                <label for="username">Name</label>
+                <input type="text" class="form-control" id="username" name="name" rows="3" required></input>
+              </div>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" form="addUserForm" class="btn btn-primary">Save User</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="table-wrapper">
+      <h1>All users</h1>
+
+      <div class="container">
+        <!-- Add this div to display the Kafka message -->
+        <div id="message" th:if="${message}" class="alert alert-success" role="alert">
+          <span th:text="${message}"></span>
+        </div>
+
+        <!-- Rest of your HTML content -->
+      </div>
+
+      <table class="table table-striped">
+        <thead class="thead-primary">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="user : ${users}">
+          <tr>
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td>
+              <!-- Delete form -->
+              <form th:action="@{'/users/' + ${user.id}}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+
+            </td>
+          </tr>
+        </th:block>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Bootstrap JS (optional, only if you need JS functionalities) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  // JavaScript to show message and hide after 5 seconds
+  $(document).ready(function() {
+    var messageElement = $("#message");
+    if (messageElement.length) {
+      messageElement.show();
+      setTimeout(function() {
+        messageElement.hide();
+      }, 5000); // 5 seconds timeout
+    }
+  });
+</script>
+</body>
+</html>

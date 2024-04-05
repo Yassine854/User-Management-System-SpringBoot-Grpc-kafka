@@ -46,7 +46,7 @@ public class PostServiceApplication {
 			post6.setContent("c'est le post 6");
 
 			CreatePost post7 = new CreatePost();
-			post7.setUser(2L);
+			post7.setUser(Long.parseLong("2"));
 			post7.setContent("c'est le post 7");
 
 			// Save the posts using IPostService

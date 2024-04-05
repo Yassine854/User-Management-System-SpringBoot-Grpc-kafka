@@ -34,6 +34,11 @@ public class PostService implements IPostService {
     }
 
     @Override
+    public List<Post> GetAllPosts() {
+        return repository.findAll();
+    }
+
+    @Override
     public void bulkDelete(User user) {
         repository.deletePostsByUser(user.getId());
     }
