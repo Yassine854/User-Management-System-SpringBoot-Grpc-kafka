@@ -1,9 +1,29 @@
+#spring:
+#  datasource:
+#    username: postgres
+#    password: 123
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/users
+#    hikari:
+#      maximum-pool-size: 25
+#      minimum-idle: 1
+#  jpa:
+#    generate-ddl: true
+#    hibernate:
+#      ddl-auto: create-drop
+#
+#grpc:
+#  server:
+#    reflection-service-enabled: true
+
+
 spring:
   datasource:
-    username: postgres
-    password: 123
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost/users
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/posts?allowPublicKeyRetrieval=true&useSSL=false
+#    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB_NAME:posts}?allowPublicKeyRetrieval=true&useSSL=false
     hikari:
       maximum-pool-size: 25
       minimum-idle: 1
@@ -15,3 +35,16 @@ spring:
 grpc:
   server:
     reflection-service-enabled: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+    consumer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringSerializer
+      value-deserializer: org.apache.kafka.common.serialization.StringSerializer
+
+#  docker run -p 3307:3306 --name mysqlcontainer -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=posts -d mysql
