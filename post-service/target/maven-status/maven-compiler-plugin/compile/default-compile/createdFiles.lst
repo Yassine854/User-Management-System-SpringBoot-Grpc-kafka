@@ -1,0 +1,11 @@
+com\aniss\postservice\clients\UserClient.class
+com\aniss\postservice\repositories\PostRepository.class
+com\aniss\postservice\clients\IUserClient.class
+com\aniss\postservice\requests\CreatePost.class
+com\aniss\postservice\controllers\PostController.class
+com\aniss\postservice\services\PostService.class
+com\aniss\postservice\controllers\UserPostController.class
+com\aniss\postservice\PostServiceApplication.class
+com\aniss\postservice\services\IPostService.class
+com\aniss\postservice\entities\Post.class
+com\aniss\postservice\models\User.class

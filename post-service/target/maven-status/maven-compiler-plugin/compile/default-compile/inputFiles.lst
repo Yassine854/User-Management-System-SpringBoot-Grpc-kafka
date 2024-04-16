@@ -1,0 +1,11 @@
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\models\User.java
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\clients\UserClient.java
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\repositories\PostRepository.java
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\PostServiceApplication.java
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\requests\CreatePost.java
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\entities\Post.java
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\clients\IUserClient.java
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\controllers\UserPostController.java
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\services\IPostService.java
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\services\PostService.java
+C:\Users\ASUS\Desktop\User-Posts SpringBoot-Grpc-kafka\post-service\src\main\java\com\aniss\postservice\controllers\PostController.java
